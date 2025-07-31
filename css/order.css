@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:  sans-serif;
+}
+:root {
+  --primary-color: #454DEF;
+  --text-white: #ffffff;
+  --text-black: #000000;
+  --gray-bg: #f1f1f1;
+  --light-blue-bg: #cccfff;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --form-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  --font-main: sans-serif;
+
+  --font-xl: 80px;
+  --font-lg: 50px;
+  --font-md: 40px;
+  --font-sm: 20px;
+  --font-xs: 12px;
+}
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      min-height: 65vh;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .order-card {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      width: 300px;
+      height: 350px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      transition: transform 0.3s;
+    }
+
+    .order-card:hover {
+      transform: scale(1.02);
+    }
+
+    .order-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .order-info p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .no-orders {
+      text-align: center;
+      color: #999;
+      font-size: 18px;
+      margin-top: 50px;
+    }
+    h2{
+        margin-top: 20px;
+    }
+    @media only screen and (max-width:700px){
+        .order-card{
+            width: 100%;
+        }
+    }

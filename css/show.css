@@ -1,0 +1,226 @@
+*{
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+
+}
+:root {
+  --primary-color: #454DEF;
+  --text-white: #ffffff;
+  --text-black: #000000;
+  --gray-bg: #f1f1f1;
+  --light-blue-bg: #cccfff;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --form-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  --font-main: sans-serif;
+
+  --font-xl: 80px;
+  --font-lg: 50px;
+  --font-md: 40px;
+  --font-sm: 20px;
+  --font-xs: 12px;
+}
+.arrow{
+  padding: 20px;
+  border-radius: 5px;
+}
+.btn-back{
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  padding: 10px;
+  border:none;
+  cursor: pointer;
+   
+}
+body{
+         background: #f0f2f5;
+
+}
+.product-grid {
+  display: flex;
+  min-height: 65vh;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+    padding: 20px;
+}
+
+.product-card p {
+    color:var(--text-black);
+    margin: 5px;
+}
+.product-card h3{
+    color: var(--text-black);
+}
+h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product-card a {
+  display: inline-block;
+  margin: 4px 5px;
+  font-size: 14px;
+  text-decoration-color: none;
+  color: white;
+  text-decoration: none;
+}
+.product-card i{
+font-size: 20px;
+    color: black;
+display: flex;
+     align-self:center;
+}
+
+.btn{
+    text-decoration: none;
+    text-decoration-color: none;
+    color: var(--text-white);
+    background-color: var(--primary-color);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    border-radius: 10px;
+}
+
+
+.btndelete{
+    color: var(--text-white);
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+}
+.no-image {
+    width: 100%;
+    height: 200px;
+    background: #eee;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.admin-controls {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px; /* spacing between buttons */
+  margin-top: 10px;
+}
+
+.btn, .btndelete {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 210px;
+    height: 400px;
+    transition: box-shadow 0.3s ease;
+    background: #fff;
+    transition-duration: 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.product-link {
+    text-decoration: none;
+    text-decoration-color: none;
+    color: var(--text-black);
+}
+.product-card a{
+  width: 100%;
+  text-decoration: none;
+  text-decoration-color: none;
+  color: var(--text-black);
+}
+
+
+.product-card img {
+    width: 100%;
+    height: 210px; 
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+.btn-buy{
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  background-color: var(--primary-color);
+}
+.btn-add{
+      width: 100%;
+      color: white;
+      background-color: var(--primary-color);
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      display: flex;align-items: center;
+      justify-content: center;
+      gap: 5px;
+     }
+@media only screen and (max-width:550px){
+  .product-card{
+    width: 100%;
+    height: auto;
+  }
+  .product-card img{
+    height: auto;
+    object-fit: contain;
+  }
+}
+@media screen and (max-width: 480px) {
+  .admin-controls {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}

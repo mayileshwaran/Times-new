@@ -1,0 +1,50 @@
+   body {
+            font-family:  sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+        }
+
+   h2{
+    padding: 15px;
+   }
+
+        .container {
+            padding: 30px;
+            max-width: 1000px;
+            margin: auto;
+            min-height: 70vh;
+        }
+
+        .query-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .query-card h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .query-card p {
+            margin: 5px 0;
+            font-size: 15px;
+        }
+
+        .query-card .timestamp {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }

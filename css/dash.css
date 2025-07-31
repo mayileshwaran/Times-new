@@ -1,0 +1,193 @@
+/* General Reset */
+* {
+  margin: 0;
+  font-family: sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #454DEF;
+  --text-white: #ffffff;
+  --text-black: #000000;
+  --gray-bg: #f1f1f1;
+  --light-blue-bg: #cccfff;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --form-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  --font-main: sans-serif;
+
+  --font-xl: 80px;
+  --font-lg: 50px;
+  --font-md: 40px;
+  --font-sm: 20px;
+  --font-xs: 12px;
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #101820;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+.navbar .logo img {
+  height: 40px;
+}
+
+.navbar .center {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.navbar .right {
+  position: relative;
+}
+
+.profile-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  z-index: 99;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown a:hover {
+  background-color: #f2f2f2;
+}
+
+.right:hover .dropdown {
+  display: block;
+}
+
+/* Dashboard container */
+.dashboard-container {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 75vh;
+}
+
+/* Headings */
+.dashboard-container h1,
+.dashboard-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Metric Cards */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.card p {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Chart Section */
+.chart-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.chart-box {
+  flex: 1 1 48%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chart-box h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Action Buttons */
+.btn-box {
+  margin-top: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-box a {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-box a:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chart-box {
+display: flex;
+flex-direction: column; }
+
+  .navbar .center {
+    font-size: 1.2rem;
+  }
+  
+}
