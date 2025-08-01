@@ -19,7 +19,7 @@ include('./config/db.php');
 
 // Prevent admin/superadmin from accessing this page
 if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'superadmin')) {
-    echo "<h2 style='color: red;'>Access Denied. Admins and Superadmins cannot access this page.</h2>";
+      die( "<script>alert('Access Denied. Admins and Superadmins cannot access this page.');</script>");
     exit;
 }
 
@@ -40,7 +40,8 @@ if (!isset($_SESSION['user_id'])) {
 
   <nav>
     <div class="logo">
-      <img src="./image/Time’s new.png" alt="Logo">
+      <a href="./index.php">
+      <img src="./image/Time’s new.png" alt="Logo"></a>
     </div>
 
     <div class="icon">
@@ -79,7 +80,7 @@ if (!isset($_SESSION['user_id'])) {
 
               <!-- <a href="logout.php">Logout</a> -->
               <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <button type="submit" name="logout">Logout</button>
+                <button type="submit" class="logout" name="logout">Logout</button>
               </form>
 
             </div>
@@ -143,7 +144,7 @@ if (!isset($_SESSION['user_id'])) {
   </div>
   <h4>Top Brands</h4>
   <div class="roll">
-    <marquee behavior="" direction=""><img src="./image/rolling.png" alt=""><img src="./image/rolling.png" alt=""><img src="./image/rolling.png" alt=""></marquee>
+    <marquee behavior="" direction=""><img src="./image/rolling.png" alt="" class="rolling"><img src="./image/rolling.png"class="rolling" alt=""><img src="./image/rolling.png" class="rolling" alt=""></marquee>
 
 
   </div>
@@ -232,7 +233,8 @@ if (!isset($_SESSION['user_id'])) {
 
   <footer>
     <div class="foot-1">
-      <img src="./image/Time’s new.png" alt="" width="200px">
+      <a href="./index.php">
+    <img src="./image/Time’s new.png" alt="" width="200px"></a>
       <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
         , lifestyle, and innovation.</p>
     </div>
@@ -263,7 +265,7 @@ if (!isset($_SESSION['user_id'])) {
       </div>
     </div>
     <div class="copy">
-      <p>2025 All rights reserved by Timesnew</p>
+      <p>&copy;2025 All rights reserved by Timesnew</p>
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

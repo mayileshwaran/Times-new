@@ -1,6 +1,8 @@
 <?php
-session_name('user_session');
-session_start();
+
+session_name('user_session'); 
+session_start(); 
+
 include("./config/db.php");
 
 // Sign Up
@@ -36,7 +38,7 @@ if (isset($_POST['login_btn'])) {
             exit;
         }
 
-        // If admin or superadmin: show alert and redirect WITHOUT setting session
+    
         if ($row['role'] === 'admin' || $row['role'] === 'superadmin') {
             echo "<script>
                 alert('Only Admin and Superadmin can login at the admin panel. You are redirected.');
@@ -45,7 +47,7 @@ if (isset($_POST['login_btn'])) {
             exit;
         }
 
-        // For user role only: create session
+     
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['role'] = $row['role'];
         $_SESSION['name'] = $row['name'];

@@ -18,8 +18,9 @@ session_name('user_session');
 include('user.php');
 include('./config/db.php');
 if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'superadmin')) {
-    echo "<h2 style='color: red;'>Access Denied. Admins and Superadmins cannot access this page.</h2>";
-    exit;}
+      die( "<script>alert('Access Denied. Admins and Superadmins cannot access this page.');</script>");
+    exit;
+}
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
     $username = "Guest";
@@ -38,7 +39,8 @@ if (!isset($_SESSION['user_id'])) {
 
 <nav>
   <div class="logo">
-    <img src="./image/Time’s new.png" alt="Logo">
+    <a href="./index.php">
+      <img src="./image/Time’s new.png" alt="Logo"></a>
   </div>
 
   <div class="icon">
@@ -109,7 +111,8 @@ if (!isset($_SESSION['user_id'])) {
 </div></div>
    <footer>
     <div class="foot-1">
-             <img src="./image/Time’s new.png" alt="" width="200px">
+             <a href="./index.php">
+    <img src="./image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>

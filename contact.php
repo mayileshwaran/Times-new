@@ -58,8 +58,9 @@ if ($message === '') {
    
 include('./config/db.php');
 if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'superadmin')) {
-    echo "<h2 style='color: red;'>Access Denied. Admins and Superadmins cannot access this page.</h2>";
-    exit;}
+      die( "<script>alert('Access Denied. Admins and Superadmins cannot access this page.');</script>");
+    exit;
+}
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
     $username = "Guest";
@@ -114,7 +115,8 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
 <nav>
   <div class="logo">
-    <img src="./image/Time’s new.png" alt="Logo">
+    <a href="./index.php">
+      <img src="./image/Time’s new.png" alt="Logo"></a>
   </div>
 
   <div class="icon">
@@ -175,10 +177,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
   <form method="POST" onsubmit="return validateForm();">
   <h3>Ask your question</h3>
-  <input type="text" name="name" id="name" placeholder="Your Name">
-  <input type="text" name="email" id="email" placeholder="Your Email">
-  <input type="text" name="phone" id="phone" placeholder="Your Phone">
-  <textarea name="message" id="message" placeholder="Your Message"></textarea>
+  <input type="text" name="name" id="name" placeholder="Your Name" required>
+  <input type="text" name="email" id="email" placeholder="Your Email" required>
+  <input type="text" name="phone" id="phone" placeholder="Your Phone" required>
+  <textarea name="message" id="message" placeholder="Your Message" required ></textarea>
 
 
 
@@ -277,7 +279,8 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
       <footer>
     <div class="foot-1">
-             <img src="./image/Time’s new.png" alt="" width="200px">
+             <a href="./index.php">
+    <img src="./image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -303,7 +306,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
-    <div class="copy"><p>2025 All rights reserved by Timesnew</p></div>
+    <div class="copy">          <p>&copy;2025 All rights reserved by Timesnew</p>
+</div>
     </footer>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>

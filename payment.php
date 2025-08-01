@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 include('./config/db.php');
 if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'superadmin')) {
-    echo "<h2 style='color: red;'>Access Denied. Admins and Superadmins cannot access this page.</h2>";
+      die( "<script>alert('Access Denied. Admins and Superadmins cannot access this page.');</script>");
     exit;
 }
 if (!isset($_SESSION['user_id'])) {
@@ -156,7 +156,8 @@ $stmt->bind_param(
 </head>
 <body>
 <div class="navbar">
-  <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
+  <div class="logo"> <a href="./index.php">
+      <img src="./image/Time’s new.png" alt="Logo"></a></div>
   <div class="center">Payment</div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
@@ -274,7 +275,8 @@ function showSection(method) {
 </script>
    <footer>
     <div class="foot-1">
-             <img src="./image/Time’s new.png" alt="" width="200px">
+             <a href="./index.php">
+    <img src="./image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -299,7 +301,8 @@ function showSection(method) {
     <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
-    <div class="copy"><p>2025 All rights reserved by Timesnew</p></div>
+    <div class="copy">          <p>&copy;2025 All rights reserved by Timesnew</p>
+</div>
     </footer>
   <script src="./js/nav.js"></script>
 

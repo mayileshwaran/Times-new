@@ -2,8 +2,8 @@
 session_name("admin_session");
 include('./auth.php');
 include('../config/db.php');
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'superadmin'])) {
-    die("Access denied.");
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superadmin')) {
+    die("<script>alert('Access Denied. Only Admins and Superadmins can access this page.'); window.history.back();</script>");
 }
 // Fetch all queries from the table
 $result = $conn->query("SELECT * FROM query ORDER BY created_at DESC");
@@ -38,22 +38,20 @@ if (!isset($_SESSION['user_id'])) {
 <body>
 
 <div class="navbar">
-    <div class="logo">
-        <img src="../image/Time’s new.png" alt="Logo">
-    </div>
-    <div class="center">Customer Queries</div>
-    <div class="right">
-        <i class="fas fa-user-circle profile-icon"></i>
-                  <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
-        <div class="dropdown">
-            <a href="./index.php">Home</a>
-            <?php
+  <div class="logo">          <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" ></a></div>
+  <div class="center">Customer Queries</div>
+  <div class="right">
+    <i class="fas fa-user-circle profile-icon"></i>
+    <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
+    <div class="dropdown">
+      <a href="./dashboard.php">Dashboard</a>
+      <!--  <?php
               if(isset($_POST['logout']))
               {
                 //  session_start();
               //  session_unset();
               session_destroy();
-              header("Location: ./login.php"); // or index.php if you prefer
+              header("Location: ./login.php"); // or dashboard.php if you prefer
               exit();
               }
             ?>
@@ -63,8 +61,8 @@ if (!isset($_SESSION['user_id'])) {
                <button type="submit" name="logout">Logout</button>
              </form>
          
-        </div>
     </div>
+  </div>
 </div>
   <div class="arrow">
     <button onclick="history.back()" class="btn-back"> <i class="fa-solid fa-circle-arrow-left"></i> Go Back</button>
@@ -87,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 <footer>
     <div class="foot-1">
-             <img src="../image/Time’s new.png" alt="" width="200px">
+                     <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -107,9 +105,10 @@ if (!isset($_SESSION['user_id'])) {
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
      <div class="foot-2">
       
-          <p>2025 All rights reserved by Timesnew</p>
+          <p>&copy;2025 All rights reserved by Timesnew</p>
     </div>
     
     </footer>
+    <script src="../js/nav.js"></script>
 </body>
 </html>

@@ -78,12 +78,19 @@ html, body {
   color: var(--text-black);
 
 }
+.tab-text img{
+   height: 200px;
+   width: 200px;
+   object-fit: contain;
+}
 .btn{
   background-color: var(--primary-color);
   color: var(--text-white);
   padding: 10px;
   border: none;
+  
 }
+
 .dropdown-menu {
       display: none;
       position: absolute;
@@ -1045,7 +1052,10 @@ nav img{
   width: 100%;
 }
 
-
+.rolling{
+  height: 50px ;
+  width: auto;
+}
   .tab-content h2{
  font-size: 15px;
   }
@@ -1057,7 +1067,17 @@ nav img{
     gap: 20px;
     flex-wrap: wrap;
   }
-
+  .dropdown button{
+      width: 100%;
+      background-color: transparent;
+      color: black;
+      display: flex; 
+      justify-content: start;
+      border: none;
+      font-size: 14px;
+      padding: 10px;
+        }
+        
   .tab-text p{
     font-size: 10px;
      }

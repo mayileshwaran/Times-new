@@ -37,12 +37,16 @@ body{
          background: #f0f2f5;
 
 }
+.bi-plus-lg::before {
+   
+    color: white;
+}
 .product-grid {
   display: flex;
   min-height: 65vh;
   flex-wrap: wrap;
-  gap: 15px;
-  justify-content: space-between;
+  gap: 5px;
+
     padding: 20px;
 }
 
@@ -64,8 +68,9 @@ h2{
   align-items: center;
   justify-content: center;
   width: 100%;
+
   font-size: 20px;
-  padding: 10px;
+  padding: 20px;
   font-weight: bold;
 }
 

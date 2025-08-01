@@ -1,8 +1,8 @@
 <?php 
 include('../config/db.php'); 
 include('auth.php'); 
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'superadmin'])) {
-    die("Access denied.");
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superadmin')) {
+    die("<script>alert('Access Denied. Only Admins and Superadmins can access this page.'); window.history.back();</script>");
 }
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
@@ -49,20 +49,20 @@ $sql = "SELECT * FROM products $filter";
 </head>
 <body>
 <div class="navbar">
-  <div class="logo"><img src="../image/Time’s new.png" alt=""></div>
+  <div class="logo">          <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" ></a></div>
   
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
           <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
     <div class="dropdown">
-      <a href="orders.php">Orders</a>
+      <a href="order-admin.php">Orders</a>
       <!--  <?php
               if(isset($_POST['logout']))
               {
                 //  session_start();
               //  session_unset();
               session_destroy();
-              header("Location: ./login.php"); // or index.php if you prefer
+              header("Location: ./login.php"); // or dashboard.php if you prefer
               exit();
               }
             ?>
@@ -158,7 +158,7 @@ if (!in_array($_SESSION['role'], ['admin', 'superadmin'])) {
 if (in_array($_SESSION['role'], ['admin', 'superadmin'])) {
     echo "<div class='admin-controls'>";
     echo "<button class='btn' onclick=\"event.stopPropagation(); window.location='update_product.php?id={$row['id']}'\">Edit</button>";
-    echo "<button class='btndelete' onclick=\"event.stopPropagation(); confirmDelete('delete_product.php?id={$row['id']}')\">Delete</button>";
+    echo "<button class='btndelete' onclick=\"event.stopPropagation(); confirmDelete('./delete_product.php?id={$row['id']}')\">Delete</button>";
     echo "</div>";
 }
 
@@ -173,7 +173,7 @@ if (in_array($_SESSION['role'], ['admin', 'superadmin'])) {
 </div>
 <footer>
     <div class="foot-1">
-             <img src="../image/Time’s new.png" alt="" width="200px">
+                     <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -193,7 +193,7 @@ if (in_array($_SESSION['role'], ['admin', 'superadmin'])) {
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
      <div class="foot-2">
       
-          <p>2025 All rights reserved by Timesnew</p>
+          <p>&copy;2025 All rights reserved by Timesnew</p>
     </div>
     
     </footer>

@@ -31,7 +31,7 @@ if (isset($_POST['login_btn'])) {
                 exit;
             } else {
                 echo "<script>
-                    alert('Only Admin and Superadmin can login the login panel. and  you are login here');
+                    alert('Only user can login at the user panel. You are redirected.');
                     window.location.href = '../login.php';
                 </script>";
                 exit;
@@ -66,7 +66,7 @@ if (isset($_POST['signup_btn'])) {
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $password, $role);
     $stmt->execute();
-    echo "<script>alert('Signup successful! Please login.'); window.location.href='../index.php';</script>";
+    echo "<script>alert('Signup successful! Please login.'); window.location.href='../dashboard.php';</script>";
     exit;
 }
 ?>

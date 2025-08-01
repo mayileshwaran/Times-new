@@ -77,8 +77,13 @@
       width: 100%;
       background-color: transparent;
       color: black;
+      display: flex; 
+      justify-content: start;
       border: none;
+      font-size: 14px;
+      padding: 10px;
         }
+        
     .dropdown a {
       display: block;
       padding: 10px;
@@ -162,7 +167,8 @@ footer{
   color: var(--text-white);
   padding: 10px;
   border:none;
-   
+  display: flex;
+   gap: 5px;
 }
 .foot-4a{
   display: flex;

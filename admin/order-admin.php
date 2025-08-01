@@ -7,8 +7,8 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'superadmin'])) {
-    die("Access denied.");
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superadmin')) {
+    die("<script>alert('Access Denied. Only Admins and Superadmins can access this page.'); window.history.back();</script>");
 }
 // Get user info
 $user_id = $_SESSION['user_id'];
@@ -80,20 +80,20 @@ $result = $stmt->get_result();
 
 <!-- Navbar -->
 <div class="navbar">
-  <div class="logo"><img src="../image/Time’s new.png" alt=""></div>
+  <div class="logo">          <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" ></a></div>
   <div class="center"><?= $is_admin ? 'All Orders' : 'Your Orders' ?></div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
     <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
     <div class="dropdown">
-      <a href="./index.php">Home</a>
+      <a href="./dashboard.php">dashboard</a>
       <!--  <?php
               if(isset($_POST['logout']))
               {
                 //  session_start();
               //  session_unset();
               session_destroy();
-              header("Location: ./login.php"); // or index.php if you prefer
+              header("Location: ./login.php"); // or dashboard.php if you prefer
               exit();
               }
             ?>
@@ -137,7 +137,7 @@ $result = $stmt->get_result();
 <?php endif; ?>
 <footer>
     <div class="foot-1">
-             <img src="../image/Time’s new.png" alt="" width="200px">
+                     <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -157,7 +157,7 @@ $result = $stmt->get_result();
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
      <div class="foot-2">
       
-          <p>2025 All rights reserved by Timesnew</p>
+          <p>&copy;2025 All rights reserved by Timesnew</p>
     </div>
     
     </footer>

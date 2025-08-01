@@ -3,8 +3,8 @@ session_name("admin_session");
 include '../config/db.php';
 include'auth.php';
 // Access check
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'superadmin') {
-    die("Access denied. Superadmin only.");
+if (!isset($_SESSION['role']) || (  $_SESSION['role'] !== 'superadmin')) {
+    die("<script>alert('Access Denied. Only  Superadmins can access this page.'); window.history.back();</script>");
 }
 
 $errors = [];
@@ -130,20 +130,20 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
 <div class="navbar">
-  <div class="logo"><img src="../image/Time’s new.png" alt=""></div>
+  <div class="logo">          <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" ></a></div>
   <div class="center">Manage User</div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
-          <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
+    <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
     <div class="dropdown">
-      <a href="order-admin.php">Orders</a>
+      <a href="./order-admin.php">Orders</a>
       <!--  <?php
               if(isset($_POST['logout']))
               {
                 //  session_start();
               //  session_unset();
               session_destroy();
-              header("Location: ./login.php"); // or index.php if you prefer
+              header("Location: ./login.php"); // or dashboard.php if you prefer
               exit();
               }
             ?>
@@ -228,7 +228,7 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 <footer>
     <div class="foot-1">
-             <img src="../image/Time’s new.png" alt="" width="200px">
+                     <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -248,9 +248,10 @@ if (!isset($_SESSION['user_id'])) {
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
      <div class="foot-2">
       
-          <p>2025 All rights reserved by Timesnew</p>
+          <p>&copy;2025 All rights reserved by Timesnew</p>
     </div>
     
     </footer>
+     <script src="../js/nav.js"></script>
 </body>
 </html>

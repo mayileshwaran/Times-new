@@ -3,8 +3,8 @@ include("../config/db.php");
 session_name("admin_session");
 include('auth.php');
 
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'superadmin'])) {
-    die("Access denied.");
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superadmin')) {
+    die("<script>alert('Access Denied. Only Admins and Superadmins can access this page.'); window.history.back();</script>");
 }
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
@@ -77,7 +77,7 @@ while ($row = $res_month->fetch_assoc()) {
 
 <!-- Navbar -->
 <div class="navbar">
-  <div class="logo"><img src="../image/Time’s new.png" alt=""></div>
+  <div class="logo">          <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" ></a></div>
   <div class="center">Dashboard</div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
@@ -90,7 +90,7 @@ while ($row = $res_month->fetch_assoc()) {
                 //  session_start();
               //  session_unset();
               session_destroy();
-              header("Location: ./login.php"); // or index.php if you prefer
+              header("Location: ./login.php"); // or dashboard.php if you prefer
               exit();
               }
             ?>
@@ -131,15 +131,15 @@ while ($row = $res_month->fetch_assoc()) {
   <!-- Navigation Buttons -->
   <div class="btn-box">
     <a href="./products-admin.php">View Products</a>
-    <a href="./order-admin.php">Order History</a>
-    <a href="./query.php">Query Page</a>
-    <a href="./manage_users.php">Manage User</a>
+    <a href="./order-admin.php">Orders</a>
+    <a href="./query.php">Queries</a>
+    <a href="./manage_users.php">Manage Users</a>
    
   </div>
 </div>
 <footer>
     <div class="foot-1">
-             <img src="../image/Time’s new.png" alt="" width="200px">
+                     <a href="./dashboard.php">   <img src="../image/Time’s new.png" alt="" width="200px"></a>
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
@@ -159,7 +159,8 @@ while ($row = $res_month->fetch_assoc()) {
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
      <div class="foot-2">
       
-          <p>2025 All rights reserved by Timesnew</p>
+                    <p>&copy;2025 All rights reserved by Timesnew</p>
+
     </div>
     
     </footer>

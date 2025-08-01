@@ -52,7 +52,7 @@ if ($is_admin) {
                 o.user_id,
                 p.name AS product_name,
                 p.image_path,
-                u.name AS user_name
+                o.fullname AS user_name
             FROM orders o
             JOIN products p ON o.product_id = p.id
             JOIN users u ON o.user_id = u.id
@@ -80,7 +80,8 @@ $result = $stmt->get_result();
 
 <!-- Navbar -->
 <div class="navbar">
-  <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
+  <div class="logo"> <a href="./index.php">
+      <img src="./image/Time’s new.png" alt="Logo"></a></div>
   <div class="center"><?= $is_admin ? 'All Orders' : 'Your Orders' ?></div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
@@ -138,7 +139,8 @@ $result = $stmt->get_result();
 
 <footer>
   <div class="foot-1">
-    <img src="./image/Time’s new.png" alt="" width="200px">
+    <a href="./index.php">
+    <img src="./image/Time’s new.png" alt="" width="200px"></a>
     <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology, lifestyle, and innovation.</p>
   </div>
   <div class="foot-2">
@@ -163,7 +165,8 @@ $result = $stmt->get_result();
       <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
     </div>
   </div>
-  <div class="copy"><p>All rights reserved © 2025</p></div>
+  <div class="copy">          <p>&copy;2025 All rights reserved by Timesnew</p>
+</div>
 </footer>
 
 <script src="./js/nav.js"></script>
