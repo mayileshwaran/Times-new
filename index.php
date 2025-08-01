@@ -12,28 +12,22 @@
 
 <body>
 
-  <?php
+<?php
+session_name('user_session');
+session_start();
+include('./config/db.php');
 
-  if (session_status() === PHP_SESSION_NONE) {
-    session_name('user_session');
-    include('user.php');
-    include('./config/db.php');
-
-// Allow only users with role 'user' or 'guest'
+// Prevent admin/superadmin from accessing this page
 if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'superadmin')) {
     echo "<h2 style='color: red;'>Access Denied. Admins and Superadmins cannot access this page.</h2>";
     exit;
 }
 
-
-  
-  }
-  if (!isset($_SESSION['user_id'])) {
-    // redirect to login or set default name
+// Fetch user name if logged in
+if (!isset($_SESSION['user_id'])) {
     $username = "Guest";
-  } else {
+} else {
     $user_id = $_SESSION['user_id'];
-
     $query = "SELECT name FROM users WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $user_id);
@@ -41,9 +35,9 @@ if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['rol
     $stmt->bind_result($username);
     $stmt->fetch();
     $stmt->close();
-  }
+}
+?>
 
-  ?>
   <nav>
     <div class="logo">
       <img src="./image/Time’s new.png" alt="Logo">

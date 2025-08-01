@@ -4,6 +4,7 @@ $errors = ['name' => '', 'email' => '', 'phone' => '', 'message' => ''];
 $name = $email = $phone = $message = '';
 $errors = [];
 $success = '';
+session_name('user_session');
 include('user.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Get values

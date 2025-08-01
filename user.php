@@ -1,5 +1,5 @@
 <?php
- session_name('user_session');
+session_name('user_session');
 session_start();
 include("./config/db.php");
 
@@ -31,28 +31,28 @@ if (isset($_POST['login_btn'])) {
     $res = $conn->query("SELECT * FROM users WHERE email='$email' AND password='$password'");
     if ($row = $res->fetch_assoc()) {
 
-       
         if ($row['status'] === 'inactive') {
             echo "<script>alert('You are not able to access. Contact Admin.'); window.history.back();</script>";
             exit;
         }
 
-    
+        // If admin or superadmin: show alert and redirect WITHOUT setting session
+        if ($row['role'] === 'admin' || $row['role'] === 'superadmin') {
+            echo "<script>
+                alert('Only Admin and Superadmin can login at the admin panel. You are redirected.');
+                window.location.href = './admin/login.php';
+            </script>";
+            exit;
+        }
+
+        // For user role only: create session
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['role'] = $row['role'];
         $_SESSION['name'] = $row['name'];
 
-        // Redirect based on role
-        if ($row['role'] === 'admin' || $row['role'] === 'superadmin') {
-         echo "<script>
-                    alert('Only Admin and Superadmin can login the login panel. and  you are login here');
-                    window.location.href = './admin/login.php';
-                </script>";
-        } 
-        else {
-            header("Location: ./index.php");
-            exit;
-        }
+        header("Location: ./index.php");
+        exit;
+
     } else {
         echo "<script>alert('Invalid credentials'); window.history.back();</script>";
         exit;

@@ -14,6 +14,7 @@
 if (session_status() === PHP_SESSION_NONE) {
 
 }
+session_name('user_session');
 include('user.php');
 include('./config/db.php');
 if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'superadmin')) {

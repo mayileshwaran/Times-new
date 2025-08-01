@@ -1,5 +1,6 @@
 <?php
 include './config/db.php';
+session_name('user_session');
 include('./user.php');
 
 if (!isset($_SESSION['user_id'])) {
