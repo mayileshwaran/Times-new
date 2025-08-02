@@ -35,7 +35,7 @@ if ($is_admin) {
                 o.user_id,
                 p.name AS product_name,
                 p.image_path,
-                u.name AS user_name
+                o.fullname AS user_name
             FROM orders o
             JOIN products p ON o.product_id = p.id
             JOIN users u ON o.user_id = u.id
